@@ -1,0 +1,56 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+<div class="mt-4 p-5 bg-light text-center">
+	<h2 class="display-4">Hello, Admin!</h2>
+	<p class="lead mb-1 mt-3">
+		This is your administrator area - you can <b>read</b>, <b>create</b>,
+		<b>delete</b> and <b>edit</b> the menu and the dishes. Can check the orders in the site, change their status when thet are delivered.
+        Can add promo codes. </p>
+        <p>
+        Hint- First you have the add Dish type. After that the menu of that type. At last you have to add the Dish. 
+        The dish will be added automatically in the concrete menu.
+	</p>
+	<p class="lead mt-1">
+		
+	</p>
+	<hr class="my-2"> 
+    <ul class="navbar-nav flex-grow-1">
+       
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="PromoCode" asp-action="Add"><b>Add promo code</b></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="PromoCode" asp-action="All"><b>All Promocodes</b></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="AllFiltered"><b>All orders</b></a>
+            </li>
+        
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="DishType" asp-action="Add"><b>Add Dish Type</b></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="DishType" asp-action="All"><b>All Dish Types</b></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Dish" asp-action="Add"><b>Add Dish</b></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Dish" asp-action="All"><b>All Dishes</b></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Add"><b>Add Menu</b></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="All"><b>All Menus</b></a>
+        </li>
+    </ul>
+</div>

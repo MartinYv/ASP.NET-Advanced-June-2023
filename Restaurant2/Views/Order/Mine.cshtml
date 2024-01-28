@@ -1,0 +1,164 @@
+﻿@using Restaurant.ViewModels.Models.Order;
+@model AllOrdersQueryViewModel
+
+
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<form method="get">
+    <div class="row">
+        <div class="form-group col-md-3 d-flex justify-content-between">
+
+
+            <div class="form-group">
+                <label asp-for="OrdersPerPage"></label>
+                <select asp-for="OrdersPerPage" class="form-control">
+                    <option value="3">3</option>
+                    <option value="6">6</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            <div class="form-group">
+                <label asp-for="OrderSorting"></label>
+                <select asp-for="OrderSorting" class="form-control">
+                    <option value="0">Newest</option>
+                    <option value="1">Oldest</option>
+                    <option value="2">Price (Ascending)</option>
+                    <option value="3">Price (Descending)</option>
+                    <option value="4">Pending</option>
+                    <option value="5">Delivered</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-3">
+            <div class="form-group mt-4 p-2">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@{
+    int previousPage = Model.CurrentPage - 1;
+    if (previousPage < 1)
+    {
+        previousPage = 1;
+    }
+
+    int maxPage = (int)Math.Ceiling((double)Model.TotalOrders /
+        Model.OrdersPerPage);
+}
+
+<div class="row mb-5">
+    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" :
+string.Empty)"
+           asp-controller="Order"
+           asp-action="MyOrders"
+           asp-route-currentPage="@previousPage"
+           asp-route-orderSorting="@((int)Model.OrderSorting)"><<</a>
+    </div>
+
+
+    @{
+        var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
+        !Model.Orders.Any();
+    }
+
+
+    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary
+ @(shouldButtonBeDisabled ? "disabled" : string.Empty)"
+           asp-controller="Order"
+           asp-action="MyOrders"
+           asp-route-currentPage="@(Model.CurrentPage + 1)"
+           asp-route-orderSorting="@((int)Model.OrderSorting)">>></a>
+    </div>
+</div>
+
+@if (!Model.Orders.Any())
+{
+    <h2 class="text-center">No orders found by the given criteria!</h2>
+}
+else
+{
+    <div class="row">
+        @foreach (var order in Model.Orders)
+        {
+            <div class="col-md-12 mt-3">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th colspan="7" class="text-center">Order Information</th>
+                        </tr>
+                        <tr>
+                            <th>Names</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Time placed</th>
+                            <th>Total price</th>
+                            <th>Promo code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@order.FirstName @order.LastName</td>
+                            <td>@order.Address</td>
+                            <td>@order.Phone</td>
+                            <td>@order.IsCompleted</td>
+                            <td>@order.CreateDate</td>
+                            <td>@order.Price</td>
+                            <td>@order.PromoCode</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Dish Name</th>
+                            <th>Image</th>
+                            <th>Price (per item)</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in order.OrderDetail)
+                        {
+                            <tr>
+                                <td>@item.Dish.Name</td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(item.Dish.ImageUrl))
+                                    {
+                                        <img src="/images/NoImage.png" style="width:80px;height:100px" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@item.Dish.ImageUrl" style="width:80px;height:100px" />
+                                    }
+                                </td>
+                                <td>@item.Dish.Price</td>
+                                <td>@item.Quantity</td>
+                                <td>@(item.Dish.Price * item.Quantity)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+}

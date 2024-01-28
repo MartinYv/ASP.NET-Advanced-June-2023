@@ -1,0 +1,54 @@
+﻿@using Restaurant.ViewModels.Models.Dish;
+
+@model AddDishViewModel
+@{
+	ViewBag.Title = "Edit Dish type";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+		<form asp-action="Edit" method="post">
+			<div class="mb-3">
+				<label asp-for="@Model.Name" class="form-label">Dish Name</label>
+				<input asp-for="@Model.Name" class="form-control" aria-required="true" />
+				<span asp-validation-for="@Model.Name" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="@Model.Description" class="form-label">Description</label>
+				<input asp-for="@Model.Description" class="form-control" aria-required="true" />
+				<span asp-validation-for="@Model.Description" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="@Model.ImageUrl" class="form-label">ImageUrl</label>
+				<textarea asp-for="@Model.ImageUrl" class="form-control" aria-required="true" rows="5"></textarea>
+				<span asp-validation-for="ImageUrl" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="@Model.Price" class="form-label">Price</label>
+				<input asp-for="@Model.Price" class="form-control" aria-required="true" />
+				<span asp-validation-for="@Model.Price" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="@Model.DishTypeId" class="form-label">Dish Type</label>
+				<select asp-for="@Model.DishTypeId" class="form-control">
+					@foreach (var type in @Model.DishTypes)
+					{
+						<option value="@type.Id">@type.Name</option>
+					}
+				</select>
+				<span asp-validation-for="@Model.DishTypeId" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<input class="btn btn-primary" type="submit" value="Save" />
+			</div>
+		</form>
+	</div>
+</div>
+
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

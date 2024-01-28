@@ -1,0 +1,55 @@
+﻿@using Restaurant.ViewModels.Models.PromoCode;
+<style>
+	.action {
+		margin-left: 5px;
+	}
+
+	.addPromoCode {
+		margin-bottom: 20px;
+	}
+
+</style>
+<form method="get">
+	<input class="btn btn-info addPromoCode" type="submit" asp-controller="PromoCode" asp-action="Add" value="Add promo code" />
+</form>
+
+
+
+
+@model IEnumerable<PromoCodeViewModel>
+
+@{
+	ViewBag.Title = "All codes";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container mt-4">
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		@foreach (var code in Model)
+		{
+			<div class="col">
+				<div class="card h-100">
+					<div class="card-body">
+						<h5 class="card-title">Code - @code.Code</h5>
+						<p class="card-title">Discount - @code.PromoPercent%</p>
+						<p class="card-text">How many times is used? - @code.UsedTimes</p>
+						<p class="card-text">How many times can be used - @code.MaxUsageTimes</p>
+						<p class="card-text">Valid until - @code.ExpirationDate</p>
+					</div>
+					<div class="card-footer d-flex justify-content-center">
+						<form asp-controller="PromoCode" asp-action="Delete" asp-route-id="@code.Id">
+							<button type="submit" class="btn btn-danger btn-sm me-2">Delete</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+
+@section Scripts{
+	<script src="~/js/managePromoCodes.js"></script>
+	}

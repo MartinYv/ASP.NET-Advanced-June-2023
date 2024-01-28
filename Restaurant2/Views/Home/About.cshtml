@@ -1,0 +1,74 @@
+﻿@{
+	ViewData["Title"] = "About us";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+	Welcome to Claudine, a French neo-brasserie by Julien Royer and The Lo & Behold Group.
+	We present an intimate side of French cuisine, 
+	inspired by honest home-cooking and convivial meals—you’ll see that joie de vivre is often found in good food that puts you in a dream,
+	wine that makes you sing and glorious company that lifts your spirits. Come as you are to this wonderful, 
+	eclectic space; how lovely life can be if one takes the time to eat!
+</p>
+
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+	@*    Social media icons*@
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+	<style>
+		.social-media-button-container {
+			margin-top: 1px;
+		}
+
+			.social-media-button-container a {
+				display: inline-block;
+				margin-right: 10px;
+				font-size: 24px;
+				color: #000;
+			}
+
+		.col-md-12{
+			margin-top : -200px;
+			margin-left: -20px;
+		}	
+	</style>
+</head>
+
+<div class="row">
+
+	<div class="col-md-6">
+		<h3>Contacts</h3>
+		<div class="contact-address"><span><i class="fa fa-home"></i></span>Aksakov str. № 65, Sofia Center</div>
+		<div class="contact-phone"><span><i class="fa fa-phone"></i></span>+359 888 130 761</div>
+		<div class="contact-email"><span><i class="fa fa-envelope"></i></span><a href="mailto:restaurant@gmail.com">restaurant@gmail.com</a></div>
+	</div>
+
+	<div class="col-md-6">
+		<h3>How to find us?</h3>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3190.819446013596!2d-122.41941578456371!3d37.77492997976071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e8fb3ebc9a7%3A0x4a501367f076adff!2sGolden+Gate+Bridge!5e0!3m2!1sen!2sus!4v1557201788814!5m2!1sen!2sus"
+					class="embed-responsive-item"
+					allowfullscreen=""
+					loading="lazy">
+			</iframe>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="col-md-12">
+			<h3>Follow us on social media</h3>
+			<div class="social-media-button-container">
+				<a class="ow-button-hover sow-social-media-button-facebook sow-social-media-button" title="Restaurant on Facebook" target="_blank" href="https://www.facebook.com/">
+					<span class="fab fa-facebook-square"></span>
+				</a>
+				<a class="ow-button-hover sow-social-media-button-instagram sow-social-media-button" title="Restaurant on Instagram" target="_blank" href="https://www.instagram.com/">
+					<span class="fab fa-instagram"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

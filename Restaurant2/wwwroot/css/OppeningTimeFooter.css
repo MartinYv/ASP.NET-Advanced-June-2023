@@ -1,0 +1,29 @@
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+    .footer h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1px;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+        margin-bottom: 1px;
+    }
+
+    .footer .fa {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .footer a {
+        color: #333;
+    }
+
+        .footer a:hover {
+            color: #007bff;
+        }
+

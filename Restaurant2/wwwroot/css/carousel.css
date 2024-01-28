@@ -1,0 +1,10 @@
+/* carousel.css */
+
+/* Center the carousel vertically and horizontally */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px; /* Adjust this value as needed */
+    margin: 0 auto; /* Center the container */
+}

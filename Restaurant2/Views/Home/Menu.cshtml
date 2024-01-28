@@ -1,0 +1,38 @@
+﻿@using Restaurant.Web.Infrastucture.Extentions;
+
+
+@{
+    ViewData["Title"] = "Menu";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+
+<p>View the menu of the rastaurant, ordered by Salats, Meals, Deserts and so on</p>
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="DishType" asp-action="Add">Add Dish Type</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="DishType" asp-action="All">All Dish Types</a>
+   </li>
+
+
+   <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Dish" asp-action="Add">Add Dish</a>
+   </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Dish" asp-action="All">All Dishes</a>
+    </li>
+
+
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Add">Add Menu</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="All">All Menus</a>
+    </li>
+</ul>

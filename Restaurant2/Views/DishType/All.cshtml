@@ -1,0 +1,26 @@
+﻿@using Restaurant.ViewModels.Models.Dish;
+
+@model IEnumerable<AllDishTypesViewModel>
+@{
+	ViewBag.Title = "All Dish Types";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+	@foreach (var type in Model)
+	{
+
+		<p class="mb-0">Type Id: @type.Id</p>
+		<p class="mb-0">Type Name: @type.Name</p>
+
+		<form asp-controller="DishType" asp-action="Delete" method="post">
+			<input type="hidden" name="typeId" value="@type.Id" />
+			<button type="submit">Delete</button>
+		</form>
+
+		<a href="/DishType/Edit/@type.Id" class="btn btn-warning">Edit</a>
+
+	}
+</div>

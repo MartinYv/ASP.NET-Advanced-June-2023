@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Cart\**" />
+    <EmbeddedResource Remove="Models\Cart\**" />
+    <None Remove="Models\Cart\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurant.Common\Restaurant.Common.csproj" />
+    <ProjectReference Include="..\Restaurant.Data.Models\Restaurant.Data.Models.csproj" />
+    <ProjectReference Include="..\Restaurant.Data\Restaurant.Data.csproj" />
+  </ItemGroup>
+
+</Project>

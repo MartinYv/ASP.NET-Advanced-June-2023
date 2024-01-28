@@ -1,0 +1,41 @@
+﻿@using Restaurant.ViewModels.Models.Dish;
+
+@model IEnumerable<AllDishesViewModel>
+
+@{
+    ViewBag.Title = "All Dishes";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var dish in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@dish.ImageUrl" class="card-img-top" alt="Dish Image" style="width: 18rem; height: 15rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@dish.Name</h5>
+                        <p class="card-text">@dish.Description</p>
+                        <p class="card-text">Category: @dish.DishType</p>
+                        <p class="card-text">Price: $@dish.Price</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        <form asp-controller="Dish" asp-action="Delete" asp-route-id="@dish.Id">
+                            <button type="submit" class="btn btn-danger btn-sm me-2">Delete</button>
+                        </form>
+
+                        <a href="/Dish/Edit/@dish.Id" class="btn btn-warning btn-sm me-2">Edit</a>
+
+                        <form asp-controller="Cart" asp-action="AddItem" method="post">
+                            <input type="hidden" name="dishId" value="@dish.Id" />
+                            <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
